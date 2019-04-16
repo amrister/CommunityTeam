@@ -1,4 +1,4 @@
-package com.swe.test.getpost;
+package com.swe.test.postController;
 
 
 import org.springframework.http.HttpStatus;
