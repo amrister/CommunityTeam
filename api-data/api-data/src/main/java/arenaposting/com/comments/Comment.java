@@ -10,23 +10,35 @@ import arenaposting.com.posts.Post;
 public class Comment {
 	
 	@Id
-	private Integer commentID;
-	private Integer userID;
+	private String commentID;
 	private String text,date;
-	private Integer userId;
+	private String userId;
 	
 	@ManyToOne
 	private Post post;
+	public String getCommentID() {
+		return commentID;
+	}
+	public void setCommentID(String commentID) {
+		this.commentID = commentID;
+	}
+	public Post getPost() {
+		return post;
+	}
+	public void setPost(Post post) {
+		this.post = post;
+	}
 	public Comment(){
 		
 	}
-	public Comment(String t, String d, Integer cID,Integer pID,Integer uID){
-		text = t;
-		setDate(d);
-		commentID = cID;
-		setUserID(uID);
+	public Comment(String t, String d, String cID,String pID,String uID){
+		super();
+		this.text = t;
+		this.setDate(d);
+		this.commentID = cID;
+		this.setUserId(uID);
 		this.post = new Post();
-		this.post.setPostID(pID); 
+		this.post.setId(pID); 
 	}
 	public String getText() {
 		return text;
@@ -34,17 +46,11 @@ public class Comment {
 	public void setText(String text) {
 		this.text = text;
 	}
-	public Integer getUserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(Integer userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
-	}
-	public Integer getUserID() {
-		return userID;
-	}
-	public void setUserID(Integer userID) {
-		this.userID = userID;
 	}
 	public String getDate() {
 		return date;

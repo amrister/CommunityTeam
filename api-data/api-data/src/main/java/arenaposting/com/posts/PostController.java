@@ -24,28 +24,28 @@ public class PostController {
 	
 	// Get a Certain Post By PostID
 	@RequestMapping("/post/{id}")
-	public Post getPost(@PathVariable("id") int postID){
-		return postService.getPost(postID);
+	public Post getPost(@PathVariable("id") String id){
+		return postService.getPost(id);
 	}
 
 	// Create a New Post
-	@RequestMapping(method = RequestMethod.POST, value = "/publish_post") 
-	public int createPost(@RequestBody Post newPost){
+	@RequestMapping(method = RequestMethod.POST, value = "/post") 
+	public String createPost(@RequestBody Post newPost){
 		postService.addPost(newPost);
-		return newPost.getUserId();
+		return newPost.getId();
 	}
 	
 	// Update a Certain Post By PostID
-	@RequestMapping(method = RequestMethod.PUT, value = "/update_post/{postID}") 
-	public int updatePost(@RequestBody Post newPost,@PathVariable int postID){
-		postService.updatePost(newPost,postID);
+	@RequestMapping(method = RequestMethod.PUT, value = "/post/{id}") 
+	public int updatePost(@RequestBody Post newPost,@PathVariable int id){
+		postService.updatePost(newPost,id);
 		return newPost.getUserId();
 	}
 	
 	// Delete a Certain Post By PostID
-	@RequestMapping(method = RequestMethod.DELETE, value="/delete_post/{postID}")
-	public void deletePost(@PathVariable int postID) {
-		 postService.deletePost(postID);
+	@RequestMapping(method = RequestMethod.DELETE, value="/post/{id}")
+	public void deletePost(@PathVariable String id) {
+		 postService.deletePost(id);
 	}
 		
 }
