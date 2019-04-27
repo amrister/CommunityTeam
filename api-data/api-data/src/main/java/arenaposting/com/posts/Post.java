@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class Post {
 	
 	@Id
-	private Integer postID;
+	private String id;
 	private String text,privacy;
 	private Integer userId,votesUp,VotesDown;
 	
@@ -15,10 +15,16 @@ public class Post {
 		setVotesUp(0);
 		setVotesDown(0);
 	}
-	public Post(String t, String p, Integer id){
+	public Post(String pID){
+		id = pID;
+	}
+	public Post(String pID,String t, String p, Integer uId, int vUp, int vDown){
+		id = pID;
 		text = t;
 		privacy = p;
-		userId = id;
+		userId = uId;
+		votesUp = vUp;
+		VotesDown= vDown;
 	}
 	public String getText() {
 		return text;
@@ -50,10 +56,10 @@ public class Post {
 	public void setVotesDown(Integer votesDown) {
 		VotesDown = votesDown;
 	}
-	public Integer getPostID() {
-		return postID;
+	public String getId() {
+		return id;
 	}
-	public void setPostID(Integer postID) {
-		this.postID = postID;
+	public void setId(String id) {
+		this.id = id;
 	}
 }

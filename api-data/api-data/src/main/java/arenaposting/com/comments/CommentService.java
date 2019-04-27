@@ -12,21 +12,21 @@ public class CommentService {
 	@Autowired
 	CommentRepository commentRepository;
 
-	public List<Comment> getAllComments(int postID){
+	public List<Comment> getAllComments(String postID){
 		List<Comment> comments = new ArrayList<>();
-		commentRepository.findAll().forEach(comments::add);
+		commentRepository.findByPostId(postID).forEach(comments::add);
 		return comments;
 	}
-	public Comment getComment(int commentID){
+	public Comment getComment(String commentID){
 		return commentRepository.findById(commentID).get();
 	}
 	public void addComment(Comment newComment) {
 		commentRepository.save(newComment);
 	}
-	public void updateComment(Comment newComment, int commentID) {
+	public void updateComment(Comment newComment, String commentID) {
 		commentRepository.save(newComment);
 	}
-	public void deleteComment(int commentID){
+	public void deleteComment(String commentID){
 		commentRepository.deleteById(commentID);
 	}
 }
